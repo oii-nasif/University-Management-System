@@ -1,33 +1,42 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BusinessLayer.Interfaces;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using UCRMS_API.Data;
 using UCRMS_API.Models;
 
 namespace UCRMS_API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class DepartmentController : ControllerBase
+    public class DepartmentController : BaseController
     {
-        private readonly DataContext _context;
+        private readonly IDepartmentService _departmentService;
 
-        public DepartmentController(DataContext context)
+        public DepartmentController(IDepartmentService departmentService)
         {
-            _context = context;
+            _departmentService = departmentService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Department>>> Get()
+        public async Task<ActionResult<List<Department>>> GetList()
         {
-            return Ok(await _context.Departments.ToListAsync());
+            try
+            {
+                var response = _departmentService.GetList();
+                if (response != null) return Ok(response);
+                else return BadRequest();
+
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
 
-        [HttpPost]
+        /*[HttpPost]
         public async Task<ActionResult<List<Department>>> AddDepartment(Department dept)
         {
-            _context.Departments.Add(dept);
+            _departmentService.Add(dept);
             await _context.SaveChangesAsync();
             return Ok(await _context.Departments.ToListAsync());
-        }
-    }
+        }*/
+    } 
 }

@@ -33,7 +33,7 @@ namespace UCRMS_API.Migrations
 
                     b.HasIndex("DepartmentsId");
 
-                    b.ToTable("CourseDepartment");
+                    b.ToTable("CourseDepartment", (string)null);
                 });
 
             modelBuilder.Entity("UCRMS_API.Model.Course", b =>
@@ -66,7 +66,7 @@ namespace UCRMS_API.Migrations
 
                     b.HasIndex("SemesterId");
 
-                    b.ToTable("Courses");
+                    b.ToTable("Courses", (string)null);
                 });
 
             modelBuilder.Entity("UCRMS_API.Model.Designation", b =>
@@ -83,7 +83,7 @@ namespace UCRMS_API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Designations");
+                    b.ToTable("Designations", (string)null);
                 });
 
             modelBuilder.Entity("UCRMS_API.Model.Semester", b =>
@@ -100,7 +100,7 @@ namespace UCRMS_API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Semesters");
+                    b.ToTable("Semesters", (string)null);
                 });
 
             modelBuilder.Entity("UCRMS_API.Model.Teacher", b =>
@@ -141,7 +141,7 @@ namespace UCRMS_API.Migrations
 
                     b.HasIndex("DesignationId");
 
-                    b.ToTable("Teachers");
+                    b.ToTable("Teachers", (string)null);
                 });
 
             modelBuilder.Entity("UCRMS_API.Models.Department", b =>
@@ -163,7 +163,7 @@ namespace UCRMS_API.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments");
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("CourseDepartment", b =>
