@@ -9,6 +9,6 @@ namespace UCRMS_API.Model
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public IList<Teacher> Teachers { get; set; }
+        public IList<Teacher>? Teachers { get; set; }
     }
 }

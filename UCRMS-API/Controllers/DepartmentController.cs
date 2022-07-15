@@ -43,9 +43,7 @@ namespace UCRMS_API.Controllers
             catch (Exception ex)
             {
                 return BadRequest();
-            }
-           
-            
+            }  
         }
     } 
 }

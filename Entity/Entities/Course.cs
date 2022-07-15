@@ -15,7 +15,7 @@ namespace UCRMS_API.Model
         public double Credit { get; set; }
         public string Description { get; set; }
         public int SemesterId { get; set; }
-        public Semester Semester { get; set; }
-        public IList<Department> Departments { get; set; }
+        public Semester? Semester { get; set; }
+        public IList<Department>? Departments { get; set; }
     }
 }

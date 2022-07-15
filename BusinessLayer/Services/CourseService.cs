@@ -6,24 +6,39 @@ namespace BusinessLayer.Services
 {
     public class CourseService: ICourseService
     {
-        private readonly DataContext _dbcontext;
+        private readonly DataContext _dbContext;
 
-        public CourseService(DataContext dbcontext)
+        public CourseService(DataContext dbContext)
         {
-            _dbcontext = dbcontext;
+            _dbContext = dbContext;
         }
 
         public List<Course> GetList()
         {
             try
             {
-                return _dbcontext.Courses.ToList();
+                return _dbContext.Courses.ToList();
             }
             catch (Exception ex)
             {
                 throw;
             }
            
+        }
+
+        public bool AddCourse(Course course)
+        {
+            try
+            {
+                var res = _dbContext.Courses.Add(course);
+                _dbContext.SaveChanges();
+                if (res != null) return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
         }
     }
 }

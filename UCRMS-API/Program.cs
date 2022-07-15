@@ -25,6 +25,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 
 builder.Services.AddScoped<ICourseService, CourseService>();
 builder.Services.AddScoped<IDepartmentService, DepartmentService>();
+builder.Services.AddScoped<ISemesterService, SemesterService>();
 
 var app = builder.Build();
 

@@ -7,9 +7,7 @@ using UCRMS_API.Models;
 
 namespace UCRMS_API.Controllers
 {
-    /*[Route("api/[controller]")]
-    [ApiController]*/
-    public class CourseController : BaseController//ControllerBase
+    public class CourseController : BaseController
     {
         private readonly ICourseService _courseService;
 
@@ -33,12 +31,21 @@ namespace UCRMS_API.Controllers
             }
         }
 
-      /*  [HttpPost]
-        public async Task<ActionResult<List<Course>>> AddCourse(Course course)
+        [HttpPost]
+        public async Task<ActionResult<bool>> AddCourse([FromBody] Course course)
         {
-            _context.Courses.Add(course);
-            await _context.SaveChangesAsync();
-            return Ok(await _context.Courses.ToListAsync());
-        }*/
+            try
+            {
+                var res = _courseService.AddCourse(course);
+                if (res) return Ok(res);
+                else return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+
     }
 }
