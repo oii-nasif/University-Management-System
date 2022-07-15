@@ -14,10 +14,10 @@ namespace UCRMS_API.Models
         [Required(ErrorMessage = "Dept. name is a required field. ")]
         public string Name { get; set; }
         [Required(ErrorMessage = "Dept. code is a required field. ")]
-        [Remote("CheckDepartmentCode", "Department", ErrorMessage = "This Dept. Code Already Exist")]
+       // [Remote("CheckDepartmentCode", "Department", ErrorMessage = "This Dept. Code Already Exist")]
         [StringLength(maximumLength: 7, MinimumLength = 2, ErrorMessage = "Department code must be between 2 to 7 character.")]
         public string Code { get; set; }
-        public IList<Course> Courses { get; set; }
-        public IList<Teacher> Teachers { get; set; }
+        public IList<Course>? Courses { get; set; }
+        public IList<Teacher>? Teachers { get; set; }
     }
 }

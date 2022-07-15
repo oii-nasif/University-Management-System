@@ -31,12 +31,21 @@ namespace UCRMS_API.Controllers
             }
         }
 
-        /*[HttpPost]
-        public async Task<ActionResult<List<Department>>> AddDepartment(Department dept)
+        [HttpPost]
+        public async Task<ActionResult<bool>> AddDepartment([FromBody]Department dept)
         {
-            _departmentService.Add(dept);
-            await _context.SaveChangesAsync();
-            return Ok(await _context.Departments.ToListAsync());
-        }*/
+            try
+            {
+                var res = _departmentService.AddDepartment(dept);
+                if(res) return Ok(res);
+                else return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+           
+            
+        }
     } 
 }

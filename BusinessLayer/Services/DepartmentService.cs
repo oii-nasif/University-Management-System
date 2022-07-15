@@ -25,5 +25,21 @@ namespace BusinessLayer.Services
             }
 
         }
+
+        public bool AddDepartment(Department dept)
+        {
+            try
+            {
+                var res = _dbContext.Departments.Add(dept);
+                _dbContext.SaveChanges();
+                if (res != null) return true; 
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
     }
 }

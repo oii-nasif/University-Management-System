@@ -5,5 +5,6 @@ namespace BusinessLayer.Interfaces
     public interface IDepartmentService
     {
         List<Department> GetList();
+        public bool AddDepartment(Department dept);
     }
 }
