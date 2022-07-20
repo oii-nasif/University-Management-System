@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Entity.Entities;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using UCRMS_API.Models;
@@ -16,6 +17,8 @@ namespace UCRMS_API.Model
         public string Description { get; set; }
         public int SemesterId { get; set; }
         public Semester? Semester { get; set; }
+        public int DepartmentId { get; set; }
         public IList<Department>? Departments { get; set; }
+        
     }
 }

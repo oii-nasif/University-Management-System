@@ -24,5 +24,32 @@ namespace BusinessLayer.Services
                 throw;
             }
         }
+
+        public List<Teacher> GetDepartmentwiseList(int deptId)
+        {
+            try
+            {
+                return _dbContext.Teachers.Where(x => x.DepartmentId == deptId).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public bool AddTeacher(Teacher teacher)
+        {
+            try
+            {
+                var res = _dbContext.Teachers.Add(teacher);
+                _dbContext.SaveChanges();
+                if (res != null) return true;
+                else return false;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

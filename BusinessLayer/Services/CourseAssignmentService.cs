@@ -1,47 +1,36 @@
 ﻿using BusinessLayer.Interfaces;
+using Entity.Entities;
 using UCRMS_API.Data;
-using UCRMS_API.Model;
 
 namespace BusinessLayer.Services
 {
-    public class CourseService: ICourseService
+    public class CourseAssignmentService : ICourseAssignmentService
     {
         private readonly DataContext _dbContext;
 
-        public CourseService(DataContext dbContext)
+        public CourseAssignmentService(DataContext dbContext)
         {
             _dbContext = dbContext;
         }
 
-        public List<Course> GetList()
+        public List<CourseAssignment> GetList()
         {
             try
             {
-                return _dbContext.Courses.ToList();
+                return _dbContext.CourseAssignments.ToList();
             }
             catch (Exception ex)
             {
                 throw;
             }
-           
-        }
-        public List<Course> GetDepartmentwiseList(int deptId)
-        {
-            try
-            {
-                return _dbContext.Courses.Where(x => x.DepartmentId == deptId).ToList();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
+
         }
 
-        public bool AddCourse(Course course)
+        public bool AddCourseAssignment(CourseAssignment courseAssignment)
         {
             try
             {
-                var res = _dbContext.Courses.Add(course);
+                var res = _dbContext.CourseAssignments.Add(courseAssignment);
                 _dbContext.SaveChanges();
                 if (res != null) return true;
                 else return false;
@@ -51,5 +40,6 @@ namespace BusinessLayer.Services
                 throw;
             }
         }
+
     }
 }

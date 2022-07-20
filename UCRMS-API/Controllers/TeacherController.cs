@@ -28,5 +28,34 @@ namespace UCRMS_API.Controllers
             }
         }
 
+        [HttpGet("departmentwise")]
+        public async Task<ActionResult<List<Teacher>>> GetDepartmentwiseList(int deptId)
+        {
+            try
+            {
+                var response = _teacherService.GetDepartmentwiseList(deptId);
+                if (response != null) return Ok(response);
+                else return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<bool>> AddTeacher([FromBody] Teacher teacher)
+        {
+            try
+            {
+                var res = _teacherService.AddTeacher(teacher);
+                if (res) return Ok(res);
+                else return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

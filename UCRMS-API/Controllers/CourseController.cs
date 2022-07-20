@@ -31,6 +31,21 @@ namespace UCRMS_API.Controllers
             }
         }
 
+        [HttpGet("departmentwise")]
+        public async Task<ActionResult<List<Course>>> GetDepartmentwiseList(int deptId)
+        {
+            try
+            {
+                var response = _courseService.GetDepartmentwiseList(deptId);
+                if (response != null) return Ok(response);
+                else return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpPost]
         public async Task<ActionResult<bool>> AddCourse([FromBody] Course course)
         {
