@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using UCRMS_API.Data;
 
@@ -10,9 +11,10 @@ using UCRMS_API.Data;
 namespace DataLayer.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220720111049_remainingCredit_columnAdded")]
+    partial class remainingCredit_columnAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -33,7 +35,7 @@ namespace DataLayer.Migrations
 
                     b.HasIndex("DepartmentsId");
 
-                    b.ToTable("CourseDepartment", (string)null);
+                    b.ToTable("CourseDepartment");
                 });
 
             modelBuilder.Entity("Entity.Entities.CourseAssignment", b =>
@@ -62,7 +64,7 @@ namespace DataLayer.Migrations
 
                     b.HasIndex("TeacherId");
 
-                    b.ToTable("CourseAssignments", (string)null);
+                    b.ToTable("CourseAssignments");
                 });
 
             modelBuilder.Entity("UCRMS_API.Model.Course", b =>
@@ -98,7 +100,7 @@ namespace DataLayer.Migrations
 
                     b.HasIndex("SemesterId");
 
-                    b.ToTable("Courses", (string)null);
+                    b.ToTable("Courses");
                 });
 
             modelBuilder.Entity("UCRMS_API.Model.Designation", b =>
@@ -115,7 +117,7 @@ namespace DataLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Designations", (string)null);
+                    b.ToTable("Designations");
                 });
 
             modelBuilder.Entity("UCRMS_API.Model.Semester", b =>
@@ -132,7 +134,7 @@ namespace DataLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Semesters", (string)null);
+                    b.ToTable("Semesters");
                 });
 
             modelBuilder.Entity("UCRMS_API.Model.Teacher", b =>
@@ -176,7 +178,7 @@ namespace DataLayer.Migrations
 
                     b.HasIndex("DesignationId");
 
-                    b.ToTable("Teachers", (string)null);
+                    b.ToTable("Teachers");
                 });
 
             modelBuilder.Entity("UCRMS_API.Models.Department", b =>
@@ -198,7 +200,7 @@ namespace DataLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Departments", (string)null);
+                    b.ToTable("Departments");
                 });
 
             modelBuilder.Entity("CourseDepartment", b =>

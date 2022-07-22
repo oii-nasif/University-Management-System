@@ -32,11 +32,11 @@ namespace UCRMS_API.Controllers
         }
 
         [HttpGet("departmentwise")]
-        public async Task<ActionResult<List<Course>>> GetDepartmentwiseList(int deptId)
+        public async Task<ActionResult<List<Course>>> GetCoursesByDept(int deptId)
         {
             try
             {
-                var response = _courseService.GetDepartmentwiseList(deptId);
+                var response = _courseService.GetCoursesByDeptId(deptId);
                 if (response != null) return Ok(response);
                 else return BadRequest();
             }

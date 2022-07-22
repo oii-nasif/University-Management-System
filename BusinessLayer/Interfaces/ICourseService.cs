@@ -5,7 +5,7 @@ namespace BusinessLayer.Interfaces
     public interface ICourseService
     {
         List<Course> GetList();
-        List<Course> GetDepartmentwiseList(int deptId);
+        List<Course> GetCoursesByDeptId(int deptId);
         public bool AddCourse(Course course);
     }
 }

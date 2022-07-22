@@ -25,7 +25,7 @@ namespace BusinessLayer.Services
             }
            
         }
-        public List<Course> GetDepartmentwiseList(int deptId)
+        public List<Course> GetCoursesByDeptId(int deptId)
         {
             try
             {

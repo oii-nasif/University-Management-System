@@ -29,11 +29,26 @@ namespace UCRMS_API.Controllers
         }
 
         [HttpGet("departmentwise")]
-        public async Task<ActionResult<List<Teacher>>> GetDepartmentwiseList(int deptId)
+        public async Task<ActionResult<List<Teacher>>> GetTeachersByDept(int deptId)
         {
             try
             {
-                var response = _teacherService.GetDepartmentwiseList(deptId);
+                var response = _teacherService.GetTeachersByDeptId(deptId);
+                if (response != null) return Ok(response);
+                else return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
+        [HttpGet("remainingcredit")]
+        public async Task<ActionResult<List<double>>> GetRemainingCreditByTeacher(int teacherId)
+        {
+            try
+            {
+                var response = _teacherService.GetRemainingCreditByTeacherId(teacherId);
                 if (response != null) return Ok(response);
                 else return BadRequest();
             }
