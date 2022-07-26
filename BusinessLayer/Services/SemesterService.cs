@@ -24,5 +24,18 @@ namespace BusinessLayer.Services
                 throw;
             }
         }
+
+        public string GetSemesterName(int semesterId)
+        {
+            try
+            {
+                var semester = _dbContext.Semesters.FirstOrDefault(s => s.Id == semesterId);
+                return semester.Name;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
     }
 }

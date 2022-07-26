@@ -29,6 +29,12 @@ builder.Services.AddScoped<ISemesterService, SemesterService>();
 builder.Services.AddScoped<ITeacherService, TeacherService>();
 builder.Services.AddScoped<IDesignationService, DesignationService>();
 builder.Services.AddScoped<ICourseAssignmentService, CourseAssignmentService>();
+builder.Services.AddScoped<IStudentService, StudentService>();
+builder.Services.AddScoped<ICourseStaticsVMService, CourseStaticsVMService>();
+builder.Services.AddScoped<IDayService, DayService>();
+builder.Services.AddScoped<IRoomNoService, RoomNoService>();
+builder.Services.AddScoped<IAllocateClassroomService, AllocateClassroomService>();
+
 
 var app = builder.Build();
 

@@ -20,5 +20,8 @@ namespace UCRMS_API.Models
         public string Code { get; set; }
         public IList<Course>? Courses { get; set; }
         public IList<Teacher>? Teachers { get; set; }
+        public IList<Student>? Students { get; set; }
+        public IList<AllocateClassroom>? AllocateClassrooms { get; set; }
+
     }
 }

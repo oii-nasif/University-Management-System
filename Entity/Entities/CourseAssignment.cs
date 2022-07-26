@@ -14,8 +14,6 @@ namespace Entity.Entities
         public int TeacherId { get; set; }
         public int CourseId { get; set; }
         public bool isAssigned { get; set; }
-        public bool isValidOperation { get; set; }
-        /*public Department? Department { get; set; }*/
         public Teacher? Teacher { get; set; }
         public Course? Course { get; set; }
     }

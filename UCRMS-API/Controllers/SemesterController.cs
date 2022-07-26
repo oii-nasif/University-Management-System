@@ -27,5 +27,20 @@ namespace UCRMS_API.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet("semesterName")]
+        public async Task<ActionResult<List<string>>> GetSemesterById(int semesterId)
+        {
+            try
+            {
+                var response = _semeseterService.GetSemesterName(semesterId);
+                if (response != null) return Ok(response);
+                else return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
     }
 }
