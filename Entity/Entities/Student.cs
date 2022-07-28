@@ -15,8 +15,9 @@ namespace Entity.Entities
         public string Address { get; set; }
         public int ContactNumber { get; set; }
         public DateTime Date { get; set; } = DateTime.UtcNow;
-        public string? RegistrationNumber { get; set; }
+        public string? RegistrationNumber { get; set; } 
         public int DepartmentId { get; set; }
         public Department? Department { get; set; }
+        public IList<CourseEnrollment>? CourseEnrollments { get; set; }
     }
 }

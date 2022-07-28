@@ -20,6 +20,8 @@ namespace UCRMS_API.Data
         public DbSet<RoomNo> RoomNos => Set<RoomNo>();
         public DbSet<Day> Days => Set<Day>();
         public DbSet<AllocateClassroom> AllocateClassrooms => Set<AllocateClassroom>();
+        public DbSet<CourseEnrollment> CourseEnrollments => Set<CourseEnrollment>();
+        public DbSet<GradeLetter> GradeLetters => Set<GradeLetter>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Seed();

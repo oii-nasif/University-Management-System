@@ -6,5 +6,6 @@ namespace BusinessLayer.Interfaces
     {
         List<Department> GetList();
         public bool AddDepartment(Department dept);
+        string GetDepartmentName(int deptId);
     }
 }

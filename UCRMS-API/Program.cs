@@ -34,6 +34,8 @@ builder.Services.AddScoped<ICourseStaticsVMService, CourseStaticsVMService>();
 builder.Services.AddScoped<IDayService, DayService>();
 builder.Services.AddScoped<IRoomNoService, RoomNoService>();
 builder.Services.AddScoped<IAllocateClassroomService, AllocateClassroomService>();
+builder.Services.AddScoped<ICourseEnrollmentService, CourseEnrollmentService>();
+builder.Services.AddScoped<IGradeLetterService, GradeLetterService>();
 
 
 var app = builder.Build();

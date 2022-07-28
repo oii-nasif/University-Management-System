@@ -34,6 +34,7 @@ namespace UCRMS_API.Controllers
         [HttpPost]
         public async Task<ActionResult<bool>> AddDepartment([FromBody]Department dept)
         {
+
             try
             {
                 var res = _departmentService.AddDepartment(dept);
@@ -44,6 +45,21 @@ namespace UCRMS_API.Controllers
             {
                 return BadRequest();
             }  
+        }
+
+        [HttpGet("deptName")]
+        public async Task<ActionResult<List<string>>> GetDepartmentById(int deptId)
+        {
+            try
+            {
+                var response = _departmentService.GetDepartmentName(deptId);
+                if (response != null) return Ok(response);
+                else return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
         }
     } 
 }

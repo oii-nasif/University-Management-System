@@ -41,5 +41,18 @@ namespace BusinessLayer.Services
             }
         }
 
+        public string GetDepartmentName(int deptId)
+        {
+            try
+            {
+                var department = _dbContext.Departments.FirstOrDefault(d => d.Id == deptId);
+                return department.Name;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
     }
 }

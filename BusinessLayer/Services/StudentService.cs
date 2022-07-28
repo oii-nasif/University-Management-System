@@ -50,7 +50,10 @@ namespace BusinessLayer.Services
         {
             try
             {
-                var studentsNumber = _dbContext.Students.Count(s => s.DepartmentId == deptId && s.Date.Date.Year == DateTime.Now.Year);
+                var studentsNumber = _dbContext.Students.Count(
+                    s => s.DepartmentId == deptId && 
+                    s.Date.Date.Year == DateTime.Now.Year
+                );
                 return studentsNumber;
             }
             catch (Exception ex)
