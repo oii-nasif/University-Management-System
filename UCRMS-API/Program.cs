@@ -36,7 +36,7 @@ builder.Services.AddScoped<IRoomNoService, RoomNoService>();
 builder.Services.AddScoped<IAllocateClassroomService, AllocateClassroomService>();
 builder.Services.AddScoped<ICourseEnrollmentService, CourseEnrollmentService>();
 builder.Services.AddScoped<IGradeLetterService, GradeLetterService>();
-
+builder.Services.AddScoped<ISaveResultService, SaveResultService>();
 
 var app = builder.Build();
 

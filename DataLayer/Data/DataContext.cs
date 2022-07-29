@@ -22,6 +22,7 @@ namespace UCRMS_API.Data
         public DbSet<AllocateClassroom> AllocateClassrooms => Set<AllocateClassroom>();
         public DbSet<CourseEnrollment> CourseEnrollments => Set<CourseEnrollment>();
         public DbSet<GradeLetter> GradeLetters => Set<GradeLetter>();
+        public DbSet<SaveResult> SaveResults => Set<SaveResult>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             //modelBuilder.Seed();

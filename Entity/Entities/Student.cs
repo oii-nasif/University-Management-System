@@ -19,5 +19,6 @@ namespace Entity.Entities
         public int DepartmentId { get; set; }
         public Department? Department { get; set; }
         public IList<CourseEnrollment>? CourseEnrollments { get; set; }
+        public IList<SaveResult>? saveResults { get; set; }
     }
 }

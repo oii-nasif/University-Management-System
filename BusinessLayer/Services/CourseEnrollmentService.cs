@@ -18,7 +18,6 @@ namespace BusinessLayer.Services
         {
 
             List<CourseEnrollment> studentList = new List<CourseEnrollment>();
-            var alreadyEnrolled = false;
             studentList = _dbContext.CourseEnrollments
                 .Where(c => c.StudentId == courseEnrollment.StudentId && c.CourseId == courseEnrollment.CourseId)
                 .ToList();
@@ -27,7 +26,6 @@ namespace BusinessLayer.Services
             {
                 if (studentList.Count > 0)
                 {
-                    alreadyEnrolled = true;
                     return false;
                 }
                 var res = _dbContext.CourseEnrollments.Add(courseEnrollment);

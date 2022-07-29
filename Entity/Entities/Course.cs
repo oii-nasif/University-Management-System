@@ -21,6 +21,7 @@ namespace UCRMS_API.Model
         public IList<Department>? Departments { get; set; }
         public IList<AllocateClassroom>? AllocateClassrooms { get; set; }
         public IList<CourseEnrollment>? CourseEnrollments { get; set; }
+        public IList<SaveResult>? saveResults { get; set; }
 
     }
 }
