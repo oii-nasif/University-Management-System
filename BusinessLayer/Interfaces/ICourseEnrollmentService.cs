@@ -1,4 +1,5 @@
 ﻿using Entity.Entities;
+using UCRMS_API.Model;
 
 namespace BusinessLayer.Interfaces
 {

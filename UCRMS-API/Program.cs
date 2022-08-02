@@ -37,6 +37,7 @@ builder.Services.AddScoped<IAllocateClassroomService, AllocateClassroomService>(
 builder.Services.AddScoped<ICourseEnrollmentService, CourseEnrollmentService>();
 builder.Services.AddScoped<IGradeLetterService, GradeLetterService>();
 builder.Services.AddScoped<ISaveResultService, SaveResultService>();
+builder.Services.AddScoped<IViewResultVMService, ViewResultVMService>();
 
 var app = builder.Build();
 

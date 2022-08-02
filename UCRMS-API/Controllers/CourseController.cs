@@ -31,6 +31,21 @@ namespace UCRMS_API.Controllers
             }
         }
 
+        [HttpGet("byenrollment")]
+        public async Task<ActionResult<List<Course>>> GetCoursesByStudent(int studentId)
+        {
+            try
+            {
+                var response = _courseService.GetCoursesByStudent(studentId);
+                if (response != null) return Ok(response);
+                else return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
         [HttpGet("departmentwise")]
         public async Task<ActionResult<List<Course>>> GetCoursesByDept(int deptId)
         {

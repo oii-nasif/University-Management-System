@@ -30,7 +30,7 @@ namespace BusinessLayer.Services
             try
             {
                 var departmentId = _dbContext.Departments.Find(student.DepartmentId);
-                var countByDeptId = GetStudentsNumberByDeptId(student.DepartmentId) + 1;
+                var countByDeptId = GetStudentsNumberByDeptId(student.DepartmentId, student) + 1;
                 if (countByDeptId < 10) student.RegistrationNumber = $"{departmentId.Code}-{student.Date.Date.Year}-00{countByDeptId}";
                 else if (countByDeptId >= 10 && countByDeptId < 100) student.RegistrationNumber = $"{departmentId.Code}-{student.Date.Date.Year}-0{countByDeptId}";
                 else student.RegistrationNumber = $"{departmentId.Code}-{student.Date.Date.Year}-{countByDeptId}";
@@ -46,13 +46,14 @@ namespace BusinessLayer.Services
             }
         }
 
-        public int GetStudentsNumberByDeptId(int deptId)
+        public int GetStudentsNumberByDeptId(int deptId, Student student)
         {
             try
             {
                 var studentsNumber = _dbContext.Students.Count(
-                    s => s.DepartmentId == deptId && 
-                    s.Date.Date.Year == DateTime.Now.Year
+                    s => 
+                    s.DepartmentId == deptId &&
+                    s.Date.Date.Year == student.Date.Date.Year
                 );
                 return studentsNumber;
             }

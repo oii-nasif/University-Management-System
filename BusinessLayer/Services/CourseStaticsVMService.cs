@@ -23,47 +23,59 @@ namespace BusinessLayer.Services
             courseList = _dbContext.Courses
                 .Where(c => c.DepartmentId == deptId)
                 .ToList();
-
-            foreach (Course course in courseList)
+            try
             {
-                Semester semester = new Semester();
-                CourseAssignment courseAssignment = new CourseAssignment();
-                Teacher teacher = new Teacher();
-
-                semester = _dbContext.Semesters
-                    .Where(s => s.Id == course.SemesterId)
-                    .FirstOrDefault();
-
-                courseAssignment = _dbContext.CourseAssignments
-                    .Where(ca => ca.CourseId == course.Id)
-                    .FirstOrDefault();
-
-                teacher = _dbContext.Teachers
-                    .Where(t => t.Id == courseAssignment.TeacherId)
-                    .FirstOrDefault();
-
-                /*List<CourseStaticsVM> cs_individual = new List<CourseStaticsVM>
+                foreach (Course course in courseList)
                 {
-                    new CourseStaticsVM()
-                    {
-                        CourseCode = course.Code,
-                        CourseName = course.Name,
-                        SemesterName = semester.Name,
-                        AssignedTo = teacher.Name  
-                    }
-                };*/
+                    Semester semester = new Semester();
+                    CourseAssignment courseAssignment = new CourseAssignment();
+                    Teacher teacher = new Teacher();
 
-                cs.Add(
-                    new CourseStaticsVM()
+                    semester = _dbContext.Semesters
+                        .Where(s => s.Id == course.SemesterId)
+                        .FirstOrDefault();
+
+                    courseAssignment = _dbContext.CourseAssignments
+                        .Where(ca => ca.CourseId == course.Id)
+                        .FirstOrDefault();
+                                        
+                    if (courseAssignment != null)
                     {
-                        CourseCode = course.Code,
-                        CourseName = course.Name,
-                        SemesterName = semester.Name,
-                        AssignedTo = teacher.Name
+                        teacher = _dbContext.Teachers
+                        .Where(t => t.Id == courseAssignment.TeacherId)
+                        .FirstOrDefault();
+
+                        cs.Add(
+                            new CourseStaticsVM()
+                            {
+                                CourseCode = course.Code,
+                                CourseName = course.Name,
+                                SemesterName = semester.Name,
+                                AssignedTo = teacher.Name
+                            }
+                        );
                     }
-                );
-                
+
+                    else
+                    {
+                        cs.Add(
+                            new CourseStaticsVM()
+                            {
+                                CourseCode = course.Code,
+                                CourseName = course.Name,
+                                SemesterName = semester.Name,
+                                AssignedTo = "Not Assigned Yet"
+                            }
+                        );
+                    }
+                }
             }
+
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
             return cs;
         }
     }

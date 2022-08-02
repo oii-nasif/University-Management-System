@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Interfaces;
 using Entity.Entities;
 using Microsoft.AspNetCore.Mvc;
+using UCRMS_API.Model;
 
 namespace UCRMS_API.Controllers
 {
@@ -12,6 +13,23 @@ namespace UCRMS_API.Controllers
             _saveResultService = saveResultService;
                 
         }
+
+        
+        [HttpGet("courses_enrolled")]
+        public async Task<ActionResult<List<Course>>> GetList(int studentId)
+        {
+            try
+            {
+                var response = _saveResultService.GetEnrolledCourses(studentId);
+                if (response != null) return Ok(response);
+                else return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
+
 
         [HttpPost]
         public async Task<ActionResult<bool>> AddResult([FromBody] SaveResult saveResult)

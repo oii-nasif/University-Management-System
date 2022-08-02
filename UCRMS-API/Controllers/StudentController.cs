@@ -29,11 +29,11 @@ namespace UCRMS_API.Controllers
         }
 
         [HttpGet("CountByDept")]
-        public async Task<ActionResult<List<double>>> CountByDeptId(int deptId)
+        public async Task<ActionResult<List<double>>> CountByDeptId(int deptId, Student student)
         {
             try
             {
-                var response = _studentService.GetStudentsNumberByDeptId(deptId);
+                var response = _studentService.GetStudentsNumberByDeptId(deptId, student);
                 if (response != null) return Ok(response);
                 else return BadRequest();
             }

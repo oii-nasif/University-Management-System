@@ -6,6 +6,7 @@ namespace BusinessLayer.Interfaces
     {
         List<Course> GetList();
         List<Course> GetCoursesByDeptId(int deptId);
+        List<Course> GetCoursesByStudent(int studentId);
         public bool AddCourse(Course course);
     }
 }

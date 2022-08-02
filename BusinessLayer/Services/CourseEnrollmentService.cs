@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.Interfaces;
 using Entity.Entities;
 using UCRMS_API.Data;
+using UCRMS_API.Model;
 using UCRMS_API.Models;
 
 namespace BusinessLayer.Services

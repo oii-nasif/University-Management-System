@@ -1,4 +1,5 @@
 ﻿using BusinessLayer.Interfaces;
+using Entity.Entities;
 using UCRMS_API.Data;
 using UCRMS_API.Model;
 
@@ -30,6 +31,32 @@ namespace BusinessLayer.Services
             try
             {
                 return _dbContext.Courses.Where(x => x.DepartmentId == deptId).ToList();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
+        public List<Course> GetCoursesByStudent(int studentId)
+        {
+            List<CourseEnrollment> courseEnrollment = new List<CourseEnrollment>();
+            courseEnrollment = _dbContext.CourseEnrollments
+                .Where(x => x.StudentId == studentId)
+                .ToList();
+            List<Course> course = new List<Course>();
+            Course c = new Course();
+            try
+            {
+                foreach (CourseEnrollment ce in courseEnrollment)
+                {
+                    c = _dbContext.Courses
+                        .Where(x => x.Id == ce.CourseId)
+                        .FirstOrDefault();
+                    course.Add(c);
+                }
+
+                return course;
             }
             catch (Exception ex)
             {
