@@ -42,5 +42,20 @@ namespace UCRMS_API.Controllers
                 return BadRequest();
             }
         }
+
+        [HttpGet("unassign_courses")]
+        public async Task<ActionResult<bool>> UnassignCourses()
+        {
+            try
+            {
+                var response = _courseAssignmentService.UnassignAllCourses();
+                if (response != null) return Ok(response);
+                else return BadRequest();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest();
+            }
+        }
     }
 }

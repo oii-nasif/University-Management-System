@@ -18,8 +18,8 @@ namespace Entity.Entities
         public RoomNo? RoomNo { get; set; }
         public Department? Department { get; set; }
         public Course? Course { get; set; }
-        public DateTime FromTime { get; set; }
-        public DateTime ToTime { get; set; }
+        public string? FromTime { get; set; }
+        public string? ToTime { get; set; }
 
     }
 }

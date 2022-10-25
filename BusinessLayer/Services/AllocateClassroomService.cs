@@ -16,6 +16,9 @@ namespace BusinessLayer.Services
 
         public bool AllocateNewClassroom(AllocateClassroom allocateClassroom)
         {
+            AllocateClassroom ac = new AllocateClassroom();
+            List<AllocateClassroom> AC = new List<AllocateClassroom>();
+
             try
             {
                 var res = _dbContext.AllocateClassrooms.Add(allocateClassroom);

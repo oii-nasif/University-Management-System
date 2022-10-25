@@ -6,5 +6,6 @@ namespace BusinessLayer.Interfaces
     {
         List<CourseAssignment> GetList();
         public bool AddCourseAssignment(CourseAssignment courseAssignment);
+        public bool UnassignAllCourses();
     }
 }

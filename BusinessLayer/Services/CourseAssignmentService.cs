@@ -58,5 +58,28 @@ namespace BusinessLayer.Services
             }
         }
 
+        public bool UnassignAllCourses()
+        {
+            List<CourseAssignment> assignedCourses = new List<CourseAssignment>();
+            assignedCourses = _dbContext.CourseAssignments
+                .Where(x => x.isAssigned == true)
+                .ToList();
+
+            try
+            {
+                foreach (CourseAssignment ca in assignedCourses)
+                {
+                    ca.isAssigned = false;
+                }
+                _dbContext.SaveChanges();
+                return true;
+            }
+            catch(Exception ex)
+            {
+                throw;
+            }
+
+        }
+
     }
 }
